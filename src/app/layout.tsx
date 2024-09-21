@@ -1,6 +1,8 @@
 import './globals.css';
 import { Figtree } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Header } from './_components/header/header';
+import { Footer } from './_components/footer/footer';
 
 const figtree = Figtree({
   display: 'swap', // render text html and execute fonts
@@ -51,8 +53,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html dir="rtl" className={`${figtree.variable} ${iransans.variable}`}>
-      <body>{children}</body>
+    <html dir="rtl" className={`dark ${figtree.variable} ${iransans.variable}`}>
+      <body className="min-h-screen grid grid-rows-[80px_1fr_auto] dark:bg-base-100 dark:text-base-content">
+        <Header />
+        <div className="flex-1 flex justify-center items-center">
+          {children}
+        </div>
+        <Footer />
+      </body>
     </html>
   );
 }
